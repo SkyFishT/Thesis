@@ -50,12 +50,57 @@ def delta_spanner(delta):
         dist=[float('Inf') for i in graph]
         min_v=index
         dist[index]=0
+        class MinHeap:
+            def __init__(self):
+                self.arr=[]
+            def exchange(self,i1,i2):
+                tmp = i1
+                i1 = i2
+                i2 = tmp
+            def up(self,index):
+                child = index
+                parent = (child - 1) / 2
+                while parent >= 0 and child != 0:
+                    if self.arr[child]['distance'] < self.arr[parent]['distance']:
+                        self.exchange(self.arr[child],self.arr[parent])
+                        child = parent
+                        parent = (child - 1) / 2
+                    else:
+                        break
+            def down(self,index):
+                len = len(self.arr)
+                start = index
+                while start*2+2 <len:
+                    if self.arr[start*2+2]['distance']>self.arr[start*2+1]['distance']:
+                        tmp = self.arr[start*2+1]
+                    else:
+                        tmp = self.arr[start*2+2]
+                    if self.arr[start]['distance'] <tmp['distance']:
+                        self.exchange(self.arr[start],tmp)
+                    start = self.arr.index(tmp)
+                if start*2+1 < len and self.arr[start*2+1]['distance']<self.arr[start]['distance']:
+                    self.exchange(self.arr[start], self.arr[start*2+1])
+
+
+            def pop(self):
+                if self.arr == []:
+                    return None
+                item = self.arr.pop()
+                self.down(0)
+                return item
+
+            def insert(self,item):
+                self.arr.append(item)
+                self.up(len(self.arr)-1)
+
+        min_heap = MinHeap()
         while(len(v)<len(dist)):
             v.append(min_v)
             tmp_adjacent = graph[min_v].adjacent_node#get the adjacent node of point of min_v
             while tmp_adjacent!=None:
                 if dist[min_v]+tmp_adjacent.distance<dist[tmp_adjacent.index]:
                     dist[tmp_adjacent.index] = dist[min_v]+tmp_adjacent.distance
+                    #min_heap.insert({'distance':dist[tmp_adjacent.index],'index':tmp_adjacent.index})
                 tmp_adjacent=tmp_adjacent.next_adjacent
             min_dist=float('Inf')
             for i in range(len(dist)):
@@ -79,10 +124,9 @@ def delta_spanner(delta):
             delta_spanner_edges[i['pointB'], i['pointA']] = 1
         for j in range(len(graph)):
             minpath(points_shortest_array,j,graph)
-    print delta_spanner_edges
     np.save(os.path.join(os.getcwd(), 'delta_spanner.npy'),delta_spanner_edges)
 
 if __name__ == '__main__':
-    delta_spanner(1.4)
+    delta_spanner(1.1)
     cur_time=time.time()-cur_time
     print cur_time
