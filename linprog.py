@@ -7,6 +7,7 @@ def liner_programming():
     sort_egdes_file = open(os.path.join(os.getcwd(), 'sort_edges.txt'), 'r')
     sort_egdes = eval(sort_egdes_file.read())
     delta_spanner_pairs = np.load(os.path.join(os.getcwd(), 'delta_spanner.npy'))
+    linpro_file = open(os.path.join(os.getcwd(), 'linpro.txt'), 'w')
     delta=1.4
     epsilon=0.1
     ratio = math.pow(math.e,epsilon/delta)
@@ -42,6 +43,7 @@ def liner_programming():
     for i in range(dimension*dimension):
         r.append((0.1,None))
     len_a_ub = len(a_ub)
+    print len_a_ub*dimension*dimension
     np_a_ub = np.zeros((len_a_ub,dimension*dimension))
     for i in range(len_a_ub):
         for j in range(dimension*dimension):
@@ -52,7 +54,8 @@ def liner_programming():
         for j in range(dimension * dimension):
             np_a_eq[i, j] = a_eq[i][j]
     res = linprog(np.array(c), np_a_ub, b_ub, np_a_eq, b_eq, bounds=tuple(r))
-    print res
+    linpro_file.write(res)
+    linpro_file.close()
 
 if __name__ == "__main__":
     liner_programming()
