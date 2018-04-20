@@ -82,6 +82,6 @@ def delta_spanner(delta):
     np.save(os.path.join(os.getcwd(), 'delta_spanner.npy'),delta_spanner_edges)
 
 if __name__ == '__main__':
-    delta_spanner(1.4)
+    delta_spanner(1.1)
     cur_time=time.time()-cur_time
     print cur_time

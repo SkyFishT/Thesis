@@ -9,10 +9,11 @@ def liner_programming():
     delta_spanner_pairs = np.load(os.path.join(os.getcwd(), 'delta_spanner.npy'))
     linpro_file = open(os.path.join(os.getcwd(), 'linpro.txt'), 'w')
     delta=1.4
-    epsilon=0.1
+    epsilon=1
     ratio = math.pow(math.e,epsilon/delta)
     dimension = len(points)
     c = [0]*dimension*dimension
+    print 'dimension is:'+str(dimension)
     for i in sort_egdes:
         x = i['pointA']
         y = i['pointB']
@@ -41,7 +42,7 @@ def liner_programming():
         a_eq.append(tmp_a)
         b_eq=b_eq+[1]
     for i in range(dimension*dimension):
-        r.append((0.1,None))
+        r.append((0,1))
     len_a_ub = len(a_ub)
     np_a_ub = np.zeros((len_a_ub,dimension*dimension))
     for i in range(len_a_ub):
@@ -53,6 +54,7 @@ def liner_programming():
         for j in range(dimension * dimension):
             np_a_eq[i, j] = a_eq[i][j]
     res = linprog(np.array(c), np_a_ub, b_ub, np_a_eq, b_eq, bounds=tuple(r))
+    print res
     linpro_file.write(str(res))
     linpro_file.close()
 
