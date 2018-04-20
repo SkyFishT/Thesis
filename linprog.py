@@ -43,7 +43,6 @@ def liner_programming():
     for i in range(dimension*dimension):
         r.append((0.1,None))
     len_a_ub = len(a_ub)
-    print len_a_ub*dimension*dimension
     np_a_ub = np.zeros((len_a_ub,dimension*dimension))
     for i in range(len_a_ub):
         for j in range(dimension*dimension):
@@ -54,7 +53,7 @@ def liner_programming():
         for j in range(dimension * dimension):
             np_a_eq[i, j] = a_eq[i][j]
     res = linprog(np.array(c), np_a_ub, b_ub, np_a_eq, b_eq, bounds=tuple(r))
-    linpro_file.write(res)
+    linpro_file.write(str(res))
     linpro_file.close()
 
 if __name__ == "__main__":

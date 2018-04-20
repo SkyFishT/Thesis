@@ -32,4 +32,4 @@ def segsplit(i,split_length):
     return  tempArr
 
 if __name__ == '__main__':
-    productedges(3)
+    productedges(5)
