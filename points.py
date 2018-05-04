@@ -19,6 +19,7 @@ def productpoints():
         return 1
     points_array.sort(sort_points)
     pointsfile.write(str(points_array))
+    pointsfile.close()
 
 if __name__ == '__main__':
     productpoints()
