@@ -1,0 +1,27 @@
+import os,math
+
+def points_in_scope_round(point,radius):
+    pointsfile = open(os.path.join(os.getcwd(), 'points.txt'), 'r')  # set of points
+    points_in_scope_file = open(os.path.join(os.getcwd(), 'points_in_scope.txt'), 'w')  # set of points
+    points = eval(pointsfile.read())
+    points_in_scope_array = []
+    def distance_of_two_point(x,y):
+        return math.sqrt(math.pow(x[0]-y[0],2)+math.pow(x[1]-y[1],2))
+    for i in points:
+        if distance_of_two_point(point,i) <= radius:
+            points_in_scope_array.append(i)
+    points_in_scope_file.write(str(points_in_scope_array))
+    points_in_scope_file.close()
+
+def points_in_scope_triangle(xs,xe,ys,ye):
+    pointsfile = open(os.path.join(os.getcwd(), 'points.txt'), 'r')  # set of points
+    points_in_scope_file = open(os.path.join(os.getcwd(), 'points_in_scope.txt'), 'w')  # set of points
+    points = eval(pointsfile.read())
+    points_in_scope_array = []
+    for i in points:
+        if i[0] >=xs and i[0]<=xe and i[1] >=ys and i[1] <= ye:
+            points_in_scope_array.append(i)
+    points_in_scope_file.write(str(points_in_scope_array))
+    points_in_scope_file.close()
+if __name__ == "__main__":
+    do=1

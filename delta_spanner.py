@@ -3,11 +3,9 @@ import numpy as np
 
 def delta_spanner(delta):
     cur_time = time.time()
-    edges_file = open(os.path.join(os.getcwd(), 'edges.txt'), 'r')
     sort_edges_file = open(os.path.join(os.getcwd(), 'sort_edges.txt'), 'r')
-    pointsfile = open(os.path.join(os.getcwd(), 'points.txt'), 'r')  # set of points
+    pointsfile = open(os.path.join(os.getcwd(), 'points_in_scope.txt'), 'r')  # set of points
     points = eval(pointsfile.read())
-    edges = eval(edges_file.read())  # list of graph edges
     sort_edges = eval(sort_edges_file.read())  # list of sorted euclid distance between all points
     num_of_points = len(points)  # number of points
     delta_spanner_edges = np.zeros((num_of_points, num_of_points))
@@ -90,10 +88,7 @@ def delta_spanner(delta):
     np.save(os.path.join(os.getcwd(), 'delta_spanner.npy'),delta_spanner_edges)
     global cur_time
     cur_time = time.time()-cur_time
-    print delta_spanner_edges[0][0]
     print "from delta_spanner time:"+str(cur_time)+",connected edges:"+str(count)
 
 if __name__ == '__main__':
     delta_spanner(1.4)
-    cur_time=time.time()-cur_time
-    print cur_time

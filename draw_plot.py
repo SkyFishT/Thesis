@@ -4,13 +4,13 @@ import matplotlib.pyplot as plt
 import os,numpy as np
 
 def draw_plot():
-    pointsfile = open(os.path.join(os.getcwd(),'points.txt'),'r')
+    pointsfile = open(os.path.join(os.getcwd(),'points_in_scope.txt'),'r')
     edges = np.load(os.path.join(os.getcwd(), 'delta_spanner.npy'))
     print edges
     points = eval(pointsfile.read())
     for i in points:
         plt.scatter(i[0],i[1])
-    print len(points)
+
     for i in range(len(points)):
         j = i+1
         while j < len(points):
