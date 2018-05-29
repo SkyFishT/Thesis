@@ -13,7 +13,7 @@ def points_in_scope_round(point,radius):
     points_in_scope_file.write(str(points_in_scope_array))
     points_in_scope_file.close()
 
-def points_in_scope_triangle(xs,xe,ys,ye):
+def points_in_scope_rectangle(xs,xe,ys,ye):
     pointsfile = open(os.path.join(os.getcwd(), 'points.txt'), 'r')  # set of points
     points_in_scope_file = open(os.path.join(os.getcwd(), 'points_in_scope.txt'), 'w')  # set of points
     points = eval(pointsfile.read())
