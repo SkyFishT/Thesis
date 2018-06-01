@@ -4,10 +4,10 @@ import product_probability_matrix#,draw_plot_by_points,product_cars,map_position
 if __name__ == "__main__":
     epsilon_set = [0.7,1.5,2]
     delta = 1.5
-    radius = 4.9
-    cross_roads = 2
+    radius =100 
+    cross_roads = 4
     height = width = (cross_roads - 1) * 10
-    split = 0.588
+    split = 5
     data.productdata(cross_roads)  # product cross road
     edges.productedges(split)  # split roads by segment road
     points.productpoints()  # product points according to segment road

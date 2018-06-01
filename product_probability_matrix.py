@@ -29,6 +29,7 @@ def product_matrix(epsilon = 0.8,delta = 1.5,radius=4.9):
                 if i==j:
                     print 'i:'+str(i)+' j:'+str(j)+' result_index:'+str(result_index)
                     fuzhi2result(result,result_index,linprog_result,linprog_index)
+        break
     result_buffer=[]
     for i in range(nums_of_points):
         result_buffer_tmp=[0]*nums_of_points
