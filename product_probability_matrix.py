@@ -1,19 +1,20 @@
-import os,points_in_scope,sort_edges,delta_spanner,linprog,numpy as np
+import os,points_in_scope,sort_edges,delta_spanner,linprog,time,numpy as np
 
 def product_matrix(epsilon = 0.8,delta = 1.5,radius=4.9):
     crossroad_file = open(os.path.join(os.getcwd(), 'cross_road.txt'), 'r')
     crossroad = eval(crossroad_file.read())
+    crossroad=[crossroad[0]]
     points_file = open(os.path.join(os.getcwd(), 'points.txt'), 'r')
     points = eval(points_file.read())
     nums_of_points=(len(points))
-    print 'nums_of_points'+str(nums_of_points)
     result = np.zeros((nums_of_points,nums_of_points))
     linpro_file = open(os.path.join(os.getcwd(), 'linprog'+str(epsilon)+'.txt'), 'w')
     def fuzhi2result(result,result_index,linprog_result,lingpro_index):
-        print 'result_index,lingpro_index:' + str(result_index) + ',' + str(lingpro_index)
         for i in range(nums_of_points):
             result[result_index,i]=linprog_result[lingpro_index*len(points)+i]
     for i in crossroad:
+        global cur_time
+        cur_time = time.time()
         points_in_scope.points_in_scope_round(i, radius)  # points in scope to join differential privacy
         sort_edges.sort_edges()  # sort segment roads
         delta_spanner.delta_spanner(delta)  # product delta spanner tree
@@ -27,8 +28,9 @@ def product_matrix(epsilon = 0.8,delta = 1.5,radius=4.9):
             for j in points:
                 result_index+=1
                 if i==j:
-                    print 'i:'+str(i)+' j:'+str(j)+' result_index:'+str(result_index)
                     fuzhi2result(result,result_index,linprog_result,linprog_index)
+        cur_time = time.time() - cur_time
+        print "from product_probability time:" + str(cur_time)
         break
     result_buffer=[]
     for i in range(nums_of_points):

@@ -2,7 +2,6 @@ import os,math,time
 import numpy as np
 
 def delta_spanner(delta):
-    cur_time = time.time()
     sort_edges_file = open(os.path.join(os.getcwd(), 'sort_edges.txt'), 'r')
     pointsfile = open(os.path.join(os.getcwd(), 'points_in_scope.txt'), 'r')  # set of points
     points = eval(pointsfile.read())
@@ -86,9 +85,6 @@ def delta_spanner(delta):
         for j in range(len(graph)):
             minpath(points_shortest_array,j,graph)
     np.save(os.path.join(os.getcwd(), 'delta_spanner.npy'),delta_spanner_edges)
-    global cur_time
-    cur_time = time.time()-cur_time
-    print "from delta_spanner time:"+str(cur_time)+",connected edges:"+str(count)
 
 if __name__ == '__main__':
     delta_spanner(1.4)

@@ -16,8 +16,6 @@ def product_cars_by_random(numbers,width,height,segment):
         row+=segment
         rows.append(row)
 
-    print 'cols:'+str(cols)+'rows:'+str(rows)
-
     for i in range(numbers):
         x = random.random()
         y = random.random()
@@ -37,13 +35,9 @@ def product_cars_by_random(numbers,width,height,segment):
                 index = j
                 min_dist = abs(rows[j]-cars[i][1])
         if x==True:
-            print 'add cars in x,position is:'+str(cars[i])
             cars[i][0] = cols[index]
-            print 'travers position is:' + str(cars[i])
         else:
-            print 'add cars in y,position is:'+str(cars[i])
             cars[i][1] = rows[index]
-            print 'travers position is:' + str(cars[i])
     row_cars_file.write(str(cars))
     row_cars_file.close()
     return cars

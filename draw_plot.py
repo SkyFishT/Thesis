@@ -10,7 +10,6 @@ def draw_plot():
     pointsInScope = eval(pointsInScopeFile.read())
     for i in points:
         plt.scatter(i[0],i[1])
-
     for i in range(len(pointsInScope)):
         j = i+1
         while j < len(pointsInScope):
