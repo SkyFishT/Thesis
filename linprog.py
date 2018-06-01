@@ -38,7 +38,6 @@ def liner_programming(epsilon=0.1,delta=1.1):
                     tmp_a[j*len(points)+k] = -ratio
                     a_ub.append(tmp_a)
                     b_ub = b_ub + [0]
-
     print "a_ub size:"+str(len(a_ub))+","+str(len(a_ub[0]))+",b_ub size:"+str(len(b_ub))
     # product the a_eq and b_eq
     for i in range(len(points_in_scope_array)):

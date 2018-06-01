@@ -19,7 +19,6 @@ def draw_plot(cars,mapping_cars,level):
     for index_points in range(nums_of_subplot):
         plt.subplot(nums_of_subplot,2,(index_points+1)*2-1)
         format_points={}
-        print points_set[index_points]
         for i in points_set[index_points]:
             if format_points.has_key(i)==False:
                 format_points[i]=1

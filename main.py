@@ -7,7 +7,7 @@ if __name__ == "__main__":
     radius = 4.9
     cross_roads = 3
     height = width = (cross_roads - 1) * 10
-    split = 1
+    split = 3.4
     data.productdata(cross_roads)  # product cross road
     edges.productedges(split)  # split roads by segment road
     points.productpoints()  # product points according to segment road
@@ -16,7 +16,7 @@ if __name__ == "__main__":
     maping_cars=[]
     for epsilon in epsilon_set:
         product_probability_matrix.product_matrix(epsilon,delta,radius)
-        traverse_cars = map_position_by_matrix.map_position(cars)
+        traverse_cars = map_position_by_matrix.map_position(cars,epsilon)
         maping_cars.append(traverse_cars)
     positions=((cross_roads-1)*10/split+1)*cross_roads*2-cross_roads*cross_roads
     level=len(cars)/float(positions)

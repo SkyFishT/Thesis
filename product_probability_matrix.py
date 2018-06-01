@@ -8,13 +8,13 @@ def product_matrix(epsilon = 0.8,delta = 1.5,radius=4.9):
     nums_of_points=(len(points))
     print 'nums_of_points'+str(nums_of_points)
     result = np.zeros((nums_of_points,nums_of_points))
-    linpro_file = open(os.path.join(os.getcwd(), 'linpro.txt'), 'w')
+    linpro_file = open(os.path.join(os.getcwd(), 'linprog'+str(epsilon)+'.txt'), 'w')
     def fuzhi2result(result,result_index,linprog_result,lingpro_index):
         print 'result_index,lingpro_index:' + str(result_index) + ',' + str(lingpro_index)
         for i in range(nums_of_points):
             result[result_index,i]=linprog_result[lingpro_index*len(points)+i]
     for i in crossroad:
-        points_in_scope.points_in_scope_round(i, 4.9)  # points in scope to join differential privacy
+        points_in_scope.points_in_scope_round(i, radius)  # points in scope to join differential privacy
         sort_edges.sort_edges()  # sort segment roads
         delta_spanner.delta_spanner(delta)  # product delta spanner tree
         linprog_result = linprog.liner_programming(epsilon, delta)
@@ -36,7 +36,7 @@ def product_matrix(epsilon = 0.8,delta = 1.5,radius=4.9):
             if(result[i,j]<=1e-5):
                 result_buffer_tmp[j] = 0
             else:
-                result_buffer_tmp[j] = round(result[i,j],3)
+                result_buffer_tmp[j] = round(result[i,j],5)
         result_buffer.append(result_buffer_tmp)
     linpro_file.write(str(result_buffer))
     linpro_file.close()
