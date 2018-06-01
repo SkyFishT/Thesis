@@ -22,12 +22,12 @@ def segsplit(i,split_length):
     segments =math.ceil(float(length)/split_length) #road's number of segments
     ratio = split_length/length #segments ratio about road's length
     temp_start = start #start of temp segment
-    temp_end = (int(temp_start[0]+x_length*ratio),int(temp_start[1]+y_length*ratio))#end of temp segment
+    temp_end = (round(temp_start[0]+x_length*ratio,2),round(temp_start[1]+y_length*ratio,2))#end of temp segment
     while(segments-1):
         segments=segments-1
         tempArr.append((temp_start,temp_end))
         temp_start = temp_end
-        temp_end = (int(temp_start[0]+x_length*ratio),int(temp_start[1]+y_length*ratio))
+        temp_end = (round(temp_start[0]+x_length*ratio,2),round(temp_start[1]+y_length*ratio,2))
     tempArr.append((temp_start,end))
     return  tempArr
 

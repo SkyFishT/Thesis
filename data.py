@@ -6,12 +6,16 @@ def productdata(width=4):
     data=[]
     cross_road = set()
     for i in range(width):
+        i=float(i)
         for j in range(width-1):
+            j=float(j)
             data.append(((i*10,j*10),(i*10,(j+1)*10)))
             cross_road.add((i*10,j*10))
             cross_road.add((i*10,(j+1)*10))
     for j in range(width):
+        j=float(j)
         for i in range(width-1):
+            i=float(i)
             data.append(((i*10,j*10),((i+1)*10,j*10)))
             cross_road.add((i*10,j*10))
             cross_road.add(((i+1)*10,j*10))
