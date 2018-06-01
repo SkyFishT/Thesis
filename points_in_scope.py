@@ -1,5 +1,12 @@
 import os,math
 
+def points_in_scope_global():
+    pointsfile = open(os.path.join(os.getcwd(), 'points.txt'), 'r')  # set of points
+    points_in_scope_file = open(os.path.join(os.getcwd(), 'points_in_scope.txt'), 'w')  # set of points
+    points_in_scope_file.write(pointsfile.read())
+    pointsfile.close()
+    points_in_scope_file.close()
+
 def points_in_scope_round(point,radius):
     pointsfile = open(os.path.join(os.getcwd(), 'points.txt'), 'r')  # set of points
     points_in_scope_file = open(os.path.join(os.getcwd(), 'points_in_scope.txt'), 'w')  # set of points

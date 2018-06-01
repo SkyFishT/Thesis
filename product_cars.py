@@ -11,11 +11,9 @@ def product_cars_by_random(numbers,width,height,segment):
     while col<=width:
         col+=segment
         cols.append(col)
-
     while row<=height:
         row+=segment
         rows.append(row)
-
     for i in range(numbers):
         x = random.random()
         y = random.random()

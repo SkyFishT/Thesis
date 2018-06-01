@@ -14,7 +14,9 @@ def liner_programming(epsilon=0.1,delta=1.1):
     numbers_of_various = numbers_of_points*numbers_of_differential_points
     c = [0]*numbers_of_various
     print 'the number of points is ' + str(numbers_of_points)
+    print points
     print 'the number of differential points is:' + str(numbers_of_differential_points)
+    print points_in_scope_array
     print 'numbers_of_various is:'+str(numbers_of_various)
     def distance_of_two_point(x,y,ndigits=2):
         return round(math.sqrt(math.pow(x[0]-y[0],2)+math.pow(x[1]-y[1],2)),ndigits)

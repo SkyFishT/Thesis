@@ -15,7 +15,8 @@ def product_matrix(epsilon = 0.8,delta = 1.5,radius=4.9):
     for i in crossroad:
         global cur_time
         cur_time = time.time()
-        points_in_scope.points_in_scope_round(i, radius)  # points in scope to join differential privacy
+        #points_in_scope.points_in_scope_round(i, radius)  # points in scope to join differential privacy
+        points_in_scope.points_in_scope_global()
         sort_edges.sort_edges()  # sort segment roads
         delta_spanner.delta_spanner(delta)  # product delta spanner tree
         linprog_result = linprog.liner_programming(epsilon, delta)

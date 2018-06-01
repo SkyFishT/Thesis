@@ -1,5 +1,5 @@
-import data,edges,points,points_in_scope,sort_edges,delta_spanner,linprog,os,draw_plot,time
-import product_probability_matrix,draw_plot_by_points,product_cars,map_position_by_matrix
+import data,edges,points,points_in_scope,sort_edges,delta_spanner,linprog,os,time,product_probability_matrix
+import draw_plot_by_points,product_cars,map_position_by_matrix,draw_plot
 
 if __name__ == "__main__":
     global cur_time
@@ -7,9 +7,9 @@ if __name__ == "__main__":
     epsilon_set = [0.7,1.5,2]
     delta = 1.5
     radius =100 
-    cross_roads = 3
+    cross_roads = 2
     height = width = (cross_roads - 1) * 10
-    split = 5
+    split = 2
     data.productdata(cross_roads)  # product cross road
     edges.productedges(split)  # split roads by segment road
     points.productpoints()  # product points according to segment road
@@ -17,12 +17,9 @@ if __name__ == "__main__":
     cars = eval(open(os.path.join(os.getcwd(), 'row_cars.txt'), 'r').read())
     maping_cars=[]
     for epsilon in epsilon_set:
-
-
         product_probability_matrix.product_matrix(epsilon,delta,radius)
         traverse_cars = map_position_by_matrix.map_position(cars,epsilon)
         maping_cars.append(traverse_cars)
-
     positions=((cross_roads-1)*10/split+1)*cross_roads*2-cross_roads*cross_roads
     level=len(cars)/float(positions)
     print len(cars),positions
