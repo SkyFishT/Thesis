@@ -1,8 +1,8 @@
 import os
 
 def productdata(width=4):
-    datafile = open('data.txt','w')
-    cross_road_file = open('cross_road.txt', 'w')
+    datafile = open('datas\\data.txt','w')
+    cross_road_file = open('datas\\cross_road.txt', 'w')
     data=[]
     cross_road = set()
     for i in range(width):

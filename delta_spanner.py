@@ -55,14 +55,14 @@ def minpath(points_shortest_array, index, graph):  # the shortest path of node o
     for i in range(len(dist)):
         points_shortest_array[index, i] = dist[i]
 def delta_spanner(cross_point,delta,global_scope=False):
-    global_pointsfile = open(os.path.join(os.getcwd(), 'points.txt'), 'r')  # set of points
+    global_pointsfile = open(os.path.join(os.getcwd()+'\\datas', 'points.txt'), 'r')  # set of points
     points=global_points=eval(global_pointsfile.read())
     num_of_global_points = len(global_points)
     if global_scope==True:
-        sort_edges_file = open(os.path.join(os.getcwd(), 'sort_edges.txt'), 'r')
+        sort_edges_file = open(os.path.join(os.getcwd()+'\\datas', 'sort_edges.txt'), 'r')
     else:
-        sort_edges_file = open(os.path.join(os.getcwd(), 'sort_edges'+str(cross_point)+'.txt'), 'r')
-        pointsfile = open(os.path.join(os.getcwd(), 'points_in_scope' + str(cross_point) + '.txt'), 'r')  # set of points
+        sort_edges_file = open(os.path.join(os.getcwd()+'\\datas', 'sort_edges'+str(cross_point)+'.txt'), 'r')
+        pointsfile = open(os.path.join(os.getcwd()+'\\datas', 'points_in_scope' + str(cross_point) + '.txt'), 'r')  # set of points
         points = eval(pointsfile.read())
     sort_edges = eval(sort_edges_file.read())  # list of sorted euclid distance between all points
     num_of_points = len(points)  # number of points
@@ -94,7 +94,7 @@ def delta_spanner(cross_point,delta,global_scope=False):
                 count=count+2
             for j in range(len(graph)):
                 minpath(points_shortest_array,j,graph)
-        np.save(os.path.join(os.getcwd(), 'delta_spanner.npy'),delta_spanner_edges)
+        np.save(os.path.join(os.getcwd()+'\\datas', 'delta_spanner.npy'),delta_spanner_edges)
     else:
         def get_index(global_index):
             for i in range(num_of_points):
@@ -111,12 +111,12 @@ def delta_spanner(cross_point,delta,global_scope=False):
                 count=count+2
             for j in range(len(graph)):
                 minpath(points_shortest_array,j,graph)
-        np.save(os.path.join(os.getcwd(), 'delta_spanner'+str(cross_point)+'.npy'), delta_spanner_edges)
+        np.save(os.path.join(os.getcwd()+'\\datas', 'delta_spanner'+str(cross_point)+'.npy'), delta_spanner_edges)
 
 def delta_spanner_global(delta):
-    pointsfile = open(os.path.join(os.getcwd(), 'cross_road.txt'), 'r')  # set of points
+    pointsfile = open(os.path.join(os.getcwd()+'\\datas', 'cross_road.txt'), 'r')  # set of points
     points = eval(pointsfile.read())
-    sort_edges_file = open(os.path.join(os.getcwd(), 'sort_edges_global.txt'), 'r')
+    sort_edges_file = open(os.path.join(os.getcwd()+'\\datas', 'sort_edges_global.txt'), 'r')
     sort_edges = eval(sort_edges_file.read())  # list of sorted euclid distance between all points
     num_of_points = len(points)  # number of points
     delta_spanner_edges = np.zeros((num_of_points, num_of_points))
@@ -139,6 +139,6 @@ def delta_spanner_global(delta):
             delta_spanner_edges[i['pointB'], i['pointA']] = 1
         for j in range(len(graph)):
             minpath(points_shortest_array, j, graph)
-    np.save(os.path.join(os.getcwd(), 'delta_spanner_global.npy'), delta_spanner_edges)
+    np.save(os.path.join(os.getcwd()+'\\datas', 'delta_spanner_global.npy'), delta_spanner_edges)
 if __name__ == '__main__':
     delta_spanner(1.4)

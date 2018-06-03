@@ -3,9 +3,9 @@ import matplotlib.pyplot as plt
 import os,numpy as np
 
 def draw_plot():
-    pointsInScopeFile = open(os.path.join(os.getcwd(),'points_in_scope.txt'),'r')
-    pointsFile = open(os.path.join(os.getcwd(), 'points.txt'), 'r')
-    edges = np.load(os.path.join(os.getcwd(), 'delta_spanner.npy'))
+    pointsInScopeFile = open(os.path.join(os.getcwd()+'\\datas','points_in_scope.txt'),'r')
+    pointsFile = open(os.path.join(os.getcwd()+'\\datas', 'points.txt'), 'r')
+    edges = np.load(os.path.join(os.getcwd()+'\\datas', 'delta_spanner.npy'))
     points=eval(pointsFile.read())
     pointsInScope = eval(pointsInScopeFile.read())
     for i in points:

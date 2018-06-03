@@ -1,7 +1,7 @@
 from scipy.optimize import linprog
 import os,math,time,numpy as np
 def liner_programming(epsilon=0.1,delta=1.1,global_scope=False):
-    points_file = open(os.path.join(os.getcwd(), 'points.txt'), 'r')
+    points_file = open(os.path.join(os.getcwd()+'\\datas', 'points.txt'), 'r')
     points = eval(points_file.read())
     numbers_of_points = len(points)
     numbers_of_various = numbers_of_points * numbers_of_points
@@ -12,7 +12,7 @@ def liner_programming(epsilon=0.1,delta=1.1,global_scope=False):
         print 'the number of points is ' + str(numbers_of_points)
         print points
         print 'numbers_of_various is:' + str(numbers_of_various)
-        delta_spanner_pairs = np.load(os.path.join(os.getcwd(), 'delta_spanner.npy'))
+        delta_spanner_pairs = np.load(os.path.join(os.getcwd()+'\\datas', 'delta_spanner.npy'))
         def distance_of_two_point(x,y,ndigits=2):
             return round(math.sqrt(math.pow(x[0]-y[0],2)+math.pow(x[1]-y[1],2)),ndigits)
         #set the objective function arguments
@@ -42,7 +42,7 @@ def liner_programming(epsilon=0.1,delta=1.1,global_scope=False):
         print 'the number of points is ' + str(numbers_of_points)
         print points
         print 'numbers_of_various is:' + str(numbers_of_various)
-        crossroad_file = open(os.path.join(os.getcwd(), 'cross_road.txt'), 'r')
+        crossroad_file = open(os.path.join(os.getcwd()+'\\datas', 'cross_road.txt'), 'r')
         crossroad = eval(crossroad_file.read())
         a_ub = []
         b_ub = []
@@ -54,9 +54,9 @@ def liner_programming(epsilon=0.1,delta=1.1,global_scope=False):
         #product a_ub and b_ub
         for i in crossroad:
             points_in_scpoe_array_dict[i]=[]
-            points_in_scope_file = open(os.path.join(os.getcwd(), 'points_in_scope'+str(i)+'.txt'), 'r')
+            points_in_scope_file = open(os.path.join(os.getcwd()+'\\datas', 'points_in_scope'+str(i)+'.txt'), 'r')
             points_in_scope_array=(eval(points_in_scope_file.read()))
-            delta_spanner_pairs=np.load(os.path.join(os.getcwd(), 'delta_spanner'+str(i)+'.npy'))
+            delta_spanner_pairs=np.load(os.path.join(os.getcwd()+'\\datas', 'delta_spanner'+str(i)+'.npy'))
             for item in points_in_scope_array:
                 points_in_scpoe_array_dict[i].append(item[0])
                 for item2 in points_in_scope_array:
@@ -68,7 +68,7 @@ def liner_programming(epsilon=0.1,delta=1.1,global_scope=False):
                             a_ub.append(tmp_a)
                             b_ub = b_ub + [0]
 
-        delta_spanner_global = np.load(os.path.join(os.getcwd(), 'delta_spanner_global.npy'))
+        delta_spanner_global = np.load(os.path.join(os.getcwd()+'\\datas', 'delta_spanner_global.npy'))
         print delta_spanner_global
         for k in range(len(points)):
             for i in range(len(crossroad)):

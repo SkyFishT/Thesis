@@ -1,8 +1,8 @@
 import os,math
 
 def productedges(splitlength):
-    datafile = open(os.path.join(os.getcwd(),'data.txt'),'r')
-    edgesfile = open(os.path.join(os.getcwd(),'edges.txt'),'w')
+    datafile = open(os.path.join(os.getcwd()+'\\datas','data.txt'),'r')
+    edgesfile = open(os.path.join(os.getcwd()+'\\datas','edges.txt'),'w')
     data=eval(datafile.read())
     segment=[]
     for i in data:

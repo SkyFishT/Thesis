@@ -8,8 +8,8 @@ def cmp(x,y):
         return 1
 def sort_edges(cross_point,global_scpoe=False):
     if global_scpoe==True:
-        sort_edges_file = open(os.path.join(os.getcwd(), 'sort_edges.txt'), 'w')
-        pointsfile = open(os.path.join(os.getcwd(), 'points.txt'), 'r')  # set of points
+        sort_edges_file = open(os.path.join(os.getcwd()+'\\datas', 'sort_edges.txt'), 'w')
+        pointsfile = open(os.path.join(os.getcwd()+'\\datas', 'points.txt'), 'r')  # set of points
         sorted_edges = []
         points = eval(pointsfile.read())
         num_of_points = len(points)  # number of points
@@ -19,8 +19,8 @@ def sort_edges(cross_point,global_scpoe=False):
                 sorted_edges.append({'pointA': i, 'pointB': j, 'distance': dist_of_points(points[i], points[j])})
                 j = j + 1
     else:
-        sort_edges_file = open(os.path.join(os.getcwd(), 'sort_edges'+str(cross_point)+'.txt'), 'w')
-        pointsfile = open(os.path.join(os.getcwd(), 'points_in_scope'+str(cross_point)+'.txt'), 'r')  # set of points
+        sort_edges_file = open(os.path.join(os.getcwd()+'\\datas', 'sort_edges'+str(cross_point)+'.txt'), 'w')
+        pointsfile = open(os.path.join(os.getcwd()+'\\datas', 'points_in_scope'+str(cross_point)+'.txt'), 'r')  # set of points
         sorted_edges = []
         points = eval(pointsfile.read())
         num_of_points = len(points)  # number of points
@@ -37,8 +37,8 @@ def sort_edges(cross_point,global_scpoe=False):
     return sorted_edges
 
 def sort_edges_global():
-    sort_edges_file = open(os.path.join(os.getcwd(), 'sort_edges_global.txt'), 'w')
-    pointsfile = open(os.path.join(os.getcwd(), 'cross_road.txt'), 'r')  # set of points
+    sort_edges_file = open(os.path.join(os.getcwd()+'\\datas', 'sort_edges_global.txt'), 'w')
+    pointsfile = open(os.path.join(os.getcwd()+'\\datas', 'cross_road.txt'), 'r')  # set of points
     sorted_edges = []
     points = eval(pointsfile.read())
     num_of_points = len(points)  # number of points
