@@ -3,7 +3,7 @@ import draw_plot_by_points,product_cars,map_position_by_matrix,draw_plot
 
 def product_matrix(cross_roads,split,epsilon_set,global_scope=False):
     global cur_time
-    experiment_files = open(os.path.join(os.getcwd()+'\\datas', 'experiment.txt'), 'a')
+    experiment_files = open(os.path.join(os.getcwd()+'\\datas', 'experiment.txt'), 'w')
     delta = 1.5
     data.productdata(cross_roads)  # product cross road
     edges.productedges(split)  # split roads by segment road
@@ -36,14 +36,11 @@ def product_error_rate(cross_roads,epsilon_set,experi_times):
                 closest_point = i
         return closest_point
     def experiment_in_error(rates):
-        product_cars.product_cars_by_random(500, width, height, 10)
+        product_cars.product_cars_by_random(1000, width, height, 10)
         maping_cars = []
         for epsilon in epsilon_set:
             traverse_cars = map_position_by_matrix.map_position(cars, epsilon)
             maping_cars.append(traverse_cars)
-
-
-        print 'the number of cars:' + str(len(cars)) + ',the number of positions is:' + str(positions)
         points_file = open(os.path.join(os.getcwd() + '\\datas', 'points.txt'), 'r')
         points = eval(points_file.read())
         points_set = maping_cars
@@ -76,7 +73,6 @@ def product_error_rate(cross_roads,epsilon_set,experi_times):
                         different += 1
             rate = float(different) / len(points)
             rates[index_points].append(rate)
-            print 'different:'+str(rate)
     rates=[]
     for i in range(nums_of_points_set):
         rates.append([])
@@ -95,13 +91,13 @@ def product_error_rate(cross_roads,epsilon_set,experi_times):
 if __name__ == "__main__":
     epsilon_set = [0.69, 1.38, 1.79, 2.07]
     delta = 1.5
-    cross_roads = 2
-    split = [1.11,2]
+    cross_roads = 3
+    split = 3.4
     global_ok=[True,False]
-    #product_matrix(cross_roads,split,epsilon_set,True)
-    #product_error_rate(cross_roads,epsilon_set,20)
-    for i in range(len(split)):
-        print str(split[i])
-        for j in range(len(global_ok)):
-            product_matrix(cross_roads, split[i], epsilon_set, global_ok[j])
-            product_error_rate(cross_roads, epsilon_set, 40)
+    product_matrix(cross_roads,split,epsilon_set,False)
+    product_error_rate(cross_roads,epsilon_set,200)
+    #for i in range(len(split)):
+    #    print str(split[i])
+    #    for j in range(len(global_ok)):
+    #        product_matrix(cross_roads, split[i], epsilon_set, global_ok[j])
+    #        product_error_rate(cross_roads, epsilon_set, 40)

@@ -18,7 +18,6 @@ def product_cars_by_random(numbers,width,height,segment):
         x = random.random()
         y = random.random()
         cars.append([x*width,y*height])
-    print 'cars:' + str(cars)
     for i in range(len(cars)):
         x=True
         index=0

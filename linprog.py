@@ -69,7 +69,6 @@ def liner_programming(epsilon=0.1,delta=1.1,global_scope=False):
                             b_ub = b_ub + [0]
 
         delta_spanner_global = np.load(os.path.join(os.getcwd()+'\\datas', 'delta_spanner_global.npy'))
-        print delta_spanner_global
         for k in range(len(points)):
             for i in range(len(crossroad)):
                 for j in range(len(crossroad)):
@@ -101,6 +100,7 @@ def liner_programming(epsilon=0.1,delta=1.1,global_scope=False):
                 tmp_a = tmp_a + [0] * len(points)
         a_eq.append(tmp_a)
         b_eq = b_eq + [1]
+
     print "a_eq size:" + str(len(a_eq)) + "," + str(len(a_eq[0])) + ",b_ub size:" + str(len(b_eq))
     print "b_eq:" + str(b_eq)
     for i in range(numbers_of_various):
