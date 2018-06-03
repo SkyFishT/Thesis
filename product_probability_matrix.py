@@ -1,6 +1,6 @@
 import os,points_in_scope,sort_edges,delta_spanner,linprog,time,numpy as np
 
-def product_matrix(epsilon = 0.8,delta = 1.5,radius=4.9,global_scope=False):
+def product_matrix(epsilon = 0.8,delta = 1.5,global_scope=False,radius=4.9):
     points_file = open(os.path.join(os.getcwd(), 'points.txt'), 'r')
     points = eval(points_file.read())
     nums_of_points = (len(points))
@@ -12,7 +12,6 @@ def product_matrix(epsilon = 0.8,delta = 1.5,radius=4.9,global_scope=False):
             result[result_index, i] = linprog_result[lingpro_index * len(points) + i]
 
     if global_scope==True:
-        global cur_time
         cur_time = time.time()
         points_in_scope.points_in_scope_global()
         sort_edges.sort_edges(None,True)  # sort segment roads
@@ -27,6 +26,8 @@ def product_matrix(epsilon = 0.8,delta = 1.5,radius=4.9,global_scope=False):
             points_in_scope.points_in_scope_round(i, radius)  # points in scope to join differential privacy
             sort_edges.sort_edges(i)  # sort segment roads
             delta_spanner.delta_spanner(i,delta)  # product delta spanner tree
+        sort_edges.sort_edges_global()  # sort segment roads
+        delta_spanner.delta_spanner_global(delta)
         linprog_result = linprog.liner_programming(epsilon, delta)
     linprog_index=-1
     for i in points:
@@ -36,8 +37,6 @@ def product_matrix(epsilon = 0.8,delta = 1.5,radius=4.9,global_scope=False):
             result_index+=1
             if i==j:
                 fuzhi2result(result,result_index,linprog_result,linprog_index)
-    cur_time = time.time() - cur_time
-    print "from product_probability time:" + str(cur_time)
     result_buffer=[]
     for i in range(nums_of_points):
         result_buffer_tmp=[0]*nums_of_points

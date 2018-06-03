@@ -61,20 +61,15 @@ def draw_plot(cars,mapping_cars,level):
         print format_points2
         print 'level:'+str(level)
         for i in points:
-            print i
             if format_points.has_key(i)==False and format_points2.has_key(i)==True:
                 if format_points2[i]>level:
-                    print 'a'
                     different += 1
             elif format_points.has_key(i)==True and format_points2.has_key(i)==False:
                 if format_points[i]>level:
-                    print 'b'
                     different += 1
             elif format_points.has_key(i)==True and format_points2.has_key(i)==True:
                 if abs(format_points2[i]- format_points[i])>level:
-                    print 'c'
                     different+=1
-        print 'different:'+str(different)
         rate=float(different)/len(points)
         print 'different rate is:'+str(rate*100)+'%'
     plt.show()
