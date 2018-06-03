@@ -7,17 +7,17 @@ def points_in_scope_global():
     pointsfile.close()
     points_in_scope_file.close()
 
-def points_in_scope_round(point,radius):
+def points_in_scope_round(cross_point,radius):
     pointsfile = open(os.path.join(os.getcwd(), 'points.txt'), 'r')  # set of points
-    points_in_scope_file = open(os.path.join(os.getcwd(), 'points_in_scope.txt'), 'w')  # set of points
+    points_in_scope_file = open(os.path.join(os.getcwd(), 'points_in_scope'+cross_point+'.txt'), 'w')  # set of points
     points = eval(pointsfile.read())
-    points_in_scope_array = []
+    points_in_scope_dict = {}
     def distance_of_two_point(x,y):
         return math.sqrt(math.pow(x[0]-y[0],2)+math.pow(x[1]-y[1],2))
-    for i in points:
-        if distance_of_two_point(point,i) <= radius:
-            points_in_scope_array.append(i)
-    points_in_scope_file.write(str(points_in_scope_array))
+    for i in len(points):
+        if distance_of_two_point(point,points[i]) <= radius:
+            points_in_scope_dict[i]=points[i]
+    points_in_scope_file.write(str(points_in_scope_dict))
     points_in_scope_file.close()
 
 def points_in_scope_rectangle(xs,xe,ys,ye):

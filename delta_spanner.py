@@ -1,16 +1,7 @@
 import os,math,time
 import numpy as np
 
-def delta_spanner(delta):
-    sort_edges_file = open(os.path.join(os.getcwd(), 'sort_edges.txt'), 'r')
-    pointsfile = open(os.path.join(os.getcwd(), 'points_in_scope.txt'), 'r')  # set of points
-    points = eval(pointsfile.read())
-    sort_edges = eval(sort_edges_file.read())  # list of sorted euclid distance between all points
-    num_of_points = len(points)  # number of points
-    delta_spanner_edges = np.zeros((num_of_points, num_of_points))
-    delta_spanner_edges[delta_spanner_edges == 0] = float(
-        'Inf')  # initialize all edges to -1 which means points between i and j is disconnect
-
+def delta_spanner(cross_point,delta,global_scope=False):
     class AdjacentNode:  # link node
         def __init__(self, index, distance=float('Inf'), next_adjacent=None):
             self.index = index
@@ -40,14 +31,6 @@ def delta_spanner(delta):
         def get_first_adjacent_nodes(self):
             return self.adjacent_node
 
-    delta_spanner_edges = np.zeros((num_of_points, num_of_points))
-    delta_spanner_edges[delta_spanner_edges == 0] = float('Inf')  # initialize all path to -1 which equal to infinity
-    points_shortest_array = np.zeros((num_of_points, num_of_points))
-    points_shortest_array[points_shortest_array == 0] = float('Inf')  # initialize all path to -1 which equal to infinity
-    graph=[]#adjacent table that store structure of points
-    for point in points:
-        tmp_point = GraphNode(points.index(point))
-        graph.append(tmp_point)
     def minpath(points_shortest_array,index,graph):# the shortest path of node of index
         v=[]#the points that have determined the distance
         dist=[float('Inf') for i in graph]
@@ -70,6 +53,27 @@ def delta_spanner(delta):
         for i in range(len(dist)):
             points_shortest_array[index,i]=dist[i]
 
+    if global_scope==True:
+        sort_edges_file = open(os.path.join(os.getcwd(), 'sort_edges.txt'), 'r')
+        pointsfile = open(os.path.join(os.getcwd(), 'points.txt'), 'r')  # set of points
+    else:
+        sort_edges_file = open(os.path.join(os.getcwd(), 'sort_edges'+cross_point+'.txt'), 'r')
+        pointsfile = open(os.path.join(os.getcwd(), 'points_in_scope' + cross_point + '.txt'), 'r')  # set of points
+    points = eval(pointsfile.read())
+    sort_edges = eval(sort_edges_file.read())  # list of sorted euclid distance between all points
+    num_of_points = len(points)  # number of points
+    delta_spanner_edges = np.zeros((num_of_points, num_of_points))
+    delta_spanner_edges[delta_spanner_edges == 0] = float(
+        'Inf')  # initialize all edges to -1 which means points between i and j is disconnect
+    delta_spanner_edges = np.zeros((num_of_points, num_of_points))
+    delta_spanner_edges[delta_spanner_edges == 0] = float('Inf')  # initialize all path to -1 which equal to infinity
+    points_shortest_array = np.zeros((num_of_points, num_of_points))
+    points_shortest_array[points_shortest_array == 0] = float('Inf')  # initialize all path to -1 which equal to infinity
+    graph=[]#adjacent table that store structure of points
+    for point in points:
+        tmp_point = GraphNode(points.index(point))
+        graph.append(tmp_point)
+
     for i in range(len(graph)):
         minpath(points_shortest_array, i, graph)
     count=0
@@ -84,7 +88,9 @@ def delta_spanner(delta):
             count=count+2
         for j in range(len(graph)):
             minpath(points_shortest_array,j,graph)
-    np.save(os.path.join(os.getcwd(), 'delta_spanner.npy'),delta_spanner_edges)
-
+    if global_scope == True:
+        np.save(os.path.join(os.getcwd(), 'delta_spanner.npy'),delta_spanner_edges)
+    else:
+        np.save(os.path.join(os.getcwd(), 'delta_spanner'+cross_point+'.npy'), delta_spanner_edges)
 if __name__ == '__main__':
     delta_spanner(1.4)
