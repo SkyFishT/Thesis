@@ -1,6 +1,6 @@
 import random,os
 def product_cars_by_random(numbers,width,height,segment):
-    row_cars_file = open(os.path.join(os.getcwd()+'\\datas', 'row_cars.txt'), 'w')
+    row_cars_file = open(os.path.join(os.getcwd(),'datas', 'row_cars.txt'), 'w')
     cars=[]
     cols=[]
     rows=[]

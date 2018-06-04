@@ -1,7 +1,7 @@
 import os,math,random
 def map_position(cars,epsilon):
-    points_file = open(os.path.join(os.getcwd()+'\\datas', 'points.txt'), 'r')
-    matrix_file = open(os.path.join(os.getcwd()+'\\datas', 'linprog'+str(epsilon)+'.txt'), 'r')
+    points_file = open(os.path.join(os.getcwd(),'datas', 'points.txt'), 'r')
+    matrix_file = open(os.path.join(os.getcwd(),'datas', 'linprog'+str(epsilon)+'.txt'), 'r')
     points = eval(points_file.read())
     matrix=eval(matrix_file.read())
     travers_cars=[]

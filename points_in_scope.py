@@ -1,15 +1,15 @@
 import os,math
 
 def points_in_scope_global():
-    pointsfile = open(os.path.join(os.getcwd()+'\\datas', 'points.txt'), 'r')  # set of points
-    points_in_scope_file = open(os.path.join(os.getcwd()+'\\datas', 'points_in_scope.txt'), 'w')  # set of points
+    pointsfile = open(os.path.join(os.getcwd(),'datas', 'points.txt'), 'r')  # set of points
+    points_in_scope_file = open(os.path.join(os.getcwd(),'datas', 'points_in_scope.txt'), 'w')  # set of points
     points_in_scope_file.write(pointsfile.read())
     pointsfile.close()
     points_in_scope_file.close()
 
 def points_in_scope_round(cross_point,radius):
-    pointsfile = open(os.path.join(os.getcwd()+'\\datas', 'points.txt'), 'r')  # set of points
-    points_in_scope_file = open(os.path.join(os.getcwd()+'\\datas', 'points_in_scope'+str(cross_point)+'.txt'), 'w')  # set of points
+    pointsfile = open(os.path.join(os.getcwd(),'datas', 'points.txt'), 'r')  # set of points
+    points_in_scope_file = open(os.path.join(os.getcwd(),'datas', 'points_in_scope'+str(cross_point)+'.txt'), 'w')  # set of points
     points = eval(pointsfile.read())
     points_in_scope_array = []
     def distance_of_two_point(x,y):
@@ -21,8 +21,8 @@ def points_in_scope_round(cross_point,radius):
     points_in_scope_file.close()
 
 def points_in_scope_rectangle(xs,xe,ys,ye):
-    pointsfile = open(os.path.join(os.getcwd()+'\\datas', 'points.txt'), 'r')  # set of points
-    points_in_scope_file = open(os.path.join(os.getcwd()+'\\datas', 'points_in_scope.txt'), 'w')  # set of points
+    pointsfile = open(os.path.join(os.getcwd(),'datas', 'points.txt'), 'r')  # set of points
+    points_in_scope_file = open(os.path.join(os.getcwd(),'datas', 'points_in_scope.txt'), 'w')  # set of points
     points = eval(pointsfile.read())
     points_in_scope_array = []
     for i in points:

@@ -13,7 +13,7 @@ if __name__ == "__main__":
     edges.productedges(split)  # split roads by segment road
     points.productpoints()  # product points according to segment road
     product_cars.product_cars_by_random(500, width, height, 10)
-    cars = eval(open(os.path.join(os.getcwd()+'\\datas', 'row_cars.txt'), 'r').read())
+    cars = eval(open(os.path.join(os.getcwd(),'datas', 'row_cars.txt'), 'r').read())
     maping_cars=[]
     for epsilon in epsilon_set:
         cur_time = time.time()

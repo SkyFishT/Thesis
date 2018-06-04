@@ -1,7 +1,7 @@
 import os,math,matplotlib.pyplot as plt
 
 def draw_plot(cars,mapping_cars,level):
-    points_file = open(os.path.join(os.getcwd()+'\\datas', 'points.txt'), 'r')
+    points_file = open(os.path.join(os.getcwd(),'datas', 'points.txt'), 'r')
     points = eval(points_file.read())
     points_set=mapping_cars
     nums_of_subplot=len(points_set)

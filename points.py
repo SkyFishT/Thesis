@@ -1,6 +1,7 @@
+import os
 def productpoints():
-    edgesfile = open('datas\\edges.txt', 'r')
-    pointsfile = open('datas\\points.txt', 'w')
+    edgesfile = open(os.path.join(os.getcwd(), 'datas', 'edges.txt'), 'r')
+    pointsfile = open(os.path.join(os.getcwd(), 'datas', 'points.txt'), 'w')
     points=set() # acquire all points
     data = eval(edgesfile.read())
     print data

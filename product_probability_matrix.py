@@ -2,11 +2,11 @@ import os,points_in_scope,sort_edges,delta_spanner,linprog,time,numpy as np
 
 def product_matrix(epsilon = 0.8,delta = 1.5,global_scope=False):
     radius = 4.9
-    points_file = open(os.path.join(os.getcwd()+'\\datas', 'points.txt'), 'r')
+    points_file = open(os.path.join(os.getcwd(),'datas', 'points.txt'), 'r')
     points = eval(points_file.read())
     nums_of_points = (len(points))
     result = np.zeros((nums_of_points, nums_of_points))
-    linpro_file = open(os.path.join(os.getcwd()+'\\datas', 'linprog' + str(epsilon) + '.txt'), 'w')
+    linpro_file = open(os.path.join(os.getcwd(),'datas', 'linprog' + str(epsilon) + '.txt'), 'w')
 
     def fuzhi2result(result, result_index, linprog_result, lingpro_index):
         for i in range(nums_of_points):
@@ -19,7 +19,7 @@ def product_matrix(epsilon = 0.8,delta = 1.5,global_scope=False):
         delta_spanner.delta_spanner(None,delta,True)  # product delta spanner tree
         linprog_result = linprog.liner_programming(epsilon, delta,True)
     else:
-        crossroad_file = open(os.path.join(os.getcwd()+'\\datas', 'cross_road.txt'), 'r')
+        crossroad_file = open(os.path.join(os.getcwd(),'datas', 'cross_road.txt'), 'r')
         crossroad = eval(crossroad_file.read())
         for i in crossroad:
             global cur_time

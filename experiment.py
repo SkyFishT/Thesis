@@ -1,9 +1,8 @@
-import data,edges,points,points_in_scope,sort_edges,delta_spanner,linprog,os,time,product_probability_matrix,math
-import draw_plot_by_points,product_cars,map_position_by_matrix,draw_plot
+import data,edges,points,sort_edges,os,time,product_probability_matrix,math,product_cars,map_position_by_matrix
 
 def product_matrix(cross_roads,split,epsilon_set,global_scope=False):
     global cur_time
-    experiment_files = open(os.path.join(os.getcwd()+'\\datas', 'experiment.txt'), 'w')
+    experiment_files = open(os.path.join(os.getcwd(),'datas', 'experiment.txt'), 'w')
     delta = 1.5
     data.productdata(cross_roads)  # product cross road
     edges.productedges(split)  # split roads by segment road
@@ -91,10 +90,10 @@ def product_error_rate(cross_roads,epsilon_set,experi_times):
 if __name__ == "__main__":
     epsilon_set = [0.69, 1.38, 1.79, 2.07]
     delta = 1.5
-    cross_roads = 3
+    cross_roads = 2
     split = 3.4
     global_ok=[True,False]
-    product_matrix(cross_roads,split,epsilon_set,False)
+    product_matrix(cross_roads,split,epsilon_set,True)
     product_error_rate(cross_roads,epsilon_set,200)
     #for i in range(len(split)):
     #    print str(split[i])
