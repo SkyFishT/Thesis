@@ -5,10 +5,10 @@ if __name__ == "__main__":
     global cur_time
     epsilon_set = [0.69,1.38,1.79,2.07]
     delta = 1.5
-    radius =1000
+    radius =4.9
     cross_roads = 2
     height = width = (cross_roads - 1) * 10
-    split = 3.4
+    split = 2
     data.productdata(cross_roads)  # product cross road
     edges.productedges(split)  # split roads by segment road
     points.productpoints()  # product points according to segment road
@@ -17,7 +17,7 @@ if __name__ == "__main__":
     maping_cars=[]
     for epsilon in epsilon_set:
         cur_time = time.time()
-        product_probability_matrix.product_matrix(epsilon,delta,radius,True)
+        #product_probability_matrix.product_matrix(epsilon,delta,True)
         cur_time = time.time() - cur_time
         print "from main time:" + str(cur_time)
         traverse_cars = map_position_by_matrix.map_position(cars,epsilon)

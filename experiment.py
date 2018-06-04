@@ -16,9 +16,9 @@ def product_matrix(cross_roads,split,epsilon_set,global_scope=False):
     experiment_files.close()
 
 def product_error_rate(cross_roads,epsilon_set,experi_times):
-    experiment_files = open(os.path.join(os.getcwd() + '\\datas', 'experiment.txt'), 'a')
-    cars = eval(open(os.path.join(os.getcwd() + '\\datas', 'row_cars.txt'), 'r').read())
-    points_file = open(os.path.join(os.getcwd() + '\\datas', 'points.txt'), 'r')
+    experiment_files = open(os.path.join(os.getcwd() ,'datas', 'experiment.txt'), 'a')
+    cars = eval(open(os.path.join(os.getcwd() ,'datas', 'row_cars.txt'), 'r').read())
+    points_file = open(os.path.join(os.getcwd() ,'datas', 'points.txt'), 'r')
     points = eval(points_file.read())
     height = width = (cross_roads - 1) * 10
     nums_of_points_set = len(epsilon_set)
@@ -40,7 +40,7 @@ def product_error_rate(cross_roads,epsilon_set,experi_times):
         for epsilon in epsilon_set:
             traverse_cars = map_position_by_matrix.map_position(cars, epsilon)
             maping_cars.append(traverse_cars)
-        points_file = open(os.path.join(os.getcwd() + '\\datas', 'points.txt'), 'r')
+        points_file = open(os.path.join(os.getcwd() ,'datas', 'points.txt'), 'r')
         points = eval(points_file.read())
         points_set = maping_cars
         for index_points in range(nums_of_points_set):
@@ -91,9 +91,9 @@ if __name__ == "__main__":
     epsilon_set = [0.69, 1.38, 1.79, 2.07]
     delta = 1.5
     cross_roads = 2
-    split = 3.4
+    split = 2
     global_ok=[True,False]
-    product_matrix(cross_roads,split,epsilon_set,True)
+    product_matrix(cross_roads,split,epsilon_set,False)
     product_error_rate(cross_roads,epsilon_set,200)
     #for i in range(len(split)):
     #    print str(split[i])
