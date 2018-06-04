@@ -61,18 +61,18 @@ def liner_programming(epsilon=0.1,delta=1.1,global_scope=False):
                 points_in_scpoe_array_dict[i].append(item[0])
                 for item2 in points_in_scope_array:
                     if delta_spanner_pairs[item[0],item2[0]]==1:
+                        print 'a:'+str(item[0])+',b:'+str(item2[0])
                         for k in range(len(points)):
                             tmp_a = [0] * numbers_of_various
                             tmp_a[item[0] * len(points) + k] = 1
                             tmp_a[item2[0] * len(points) + k] = -ratio
                             a_ub.append(tmp_a)
                             b_ub = b_ub + [0]
-
         delta_spanner_global = np.load(os.path.join(os.getcwd(),'datas', 'delta_spanner_global.npy'))
-        for k in range(len(points)):
-            for i in range(len(crossroad)):
-                for j in range(len(crossroad)):
-                    if delta_spanner_global[i,j]==1:
+        for i in range(len(crossroad)):
+            for j in range(len(crossroad)):
+                if delta_spanner_global[i,j]==1:
+                    for k in range(len(points)):
                         tmp_a = [0] * numbers_of_various
                         for argu_eq_one in points_in_scpoe_array_dict[crossroad[i]]:
                             tmp_a[argu_eq_one*len(points)+k] = 1
