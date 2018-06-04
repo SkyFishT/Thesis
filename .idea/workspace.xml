@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3780db22-ac60-43b8-a001-f45f98b6e393" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/experiment" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data.py" afterPath="$PROJECT_DIR$/data.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/delta_spanner.py" afterPath="$PROJECT_DIR$/delta_spanner.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/draw_plot.py" afterPath="$PROJECT_DIR$/draw_plot.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/draw_plot_by_points.py" afterPath="$PROJECT_DIR$/draw_plot_by_points.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/edges.py" afterPath="$PROJECT_DIR$/edges.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/linprog.py" afterPath="$PROJECT_DIR$/linprog.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/map_position_by_matrix.py" afterPath="$PROJECT_DIR$/map_position_by_matrix.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/points.py" afterPath="$PROJECT_DIR$/points.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/points_in_scope.py" afterPath="$PROJECT_DIR$/points_in_scope.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/product_cars.py" afterPath="$PROJECT_DIR$/product_cars.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/product_probability_matrix.py" afterPath="$PROJECT_DIR$/product_probability_matrix.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sort_edges.py" afterPath="$PROJECT_DIR$/sort_edges.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -119,7 +107,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="experiment.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="experiment.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/experiment.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-1201">
@@ -139,23 +127,27 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="sort_edges.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/sort_edges.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1320">
+              <caret line="10" column="62" lean-forward="false" selection-start-line="10" selection-start-column="62" selection-end-line="10" selection-end-column="62" />
+              <caret line="11" column="57" lean-forward="false" selection-start-line="11" selection-start-column="57" selection-end-line="11" selection-end-column="57" />
+              <caret line="21" column="62" lean-forward="false" selection-start-line="21" selection-start-column="62" selection-end-line="21" selection-end-column="62" />
+              <caret line="22" column="57" lean-forward="false" selection-start-line="22" selection-start-column="57" selection-end-line="22" selection-end-column="57" />
+              <caret line="39" column="58" lean-forward="false" selection-start-line="39" selection-start-column="58" selection-end-line="39" selection-end-column="58" />
+              <caret line="40" column="53" lean-forward="false" selection-start-line="40" selection-start-column="53" selection-end-line="40" selection-end-column="53" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="edges.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/edges.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="33">
               <caret line="3" column="51" lean-forward="false" selection-start-line="3" selection-start-column="51" selection-end-line="3" selection-end-column="51" />
               <caret line="4" column="52" lean-forward="false" selection-start-line="4" selection-start-column="52" selection-end-line="4" selection-end-column="52" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="map_position_by_matrix.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/map_position_by_matrix.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="99">
-              <caret line="2" column="54" lean-forward="false" selection-start-line="2" selection-start-column="54" selection-end-line="2" selection-end-column="54" />
-              <caret line="3" column="54" lean-forward="false" selection-start-line="3" selection-start-column="54" selection-end-line="3" selection-end-column="54" />
               <folding />
             </state>
           </provider>
@@ -224,7 +216,6 @@
         <option value="$PROJECT_DIR$/linprog0.69.txt" />
         <option value="$PROJECT_DIR$/linprog1.38.txt" />
         <option value="$PROJECT_DIR$/linprog1.79.txt" />
-        <option value="$PROJECT_DIR$/sort_edges.py" />
         <option value="$PROJECT_DIR$/experiment" />
         <option value="$PROJECT_DIR$/product_probability_matrix.py" />
         <option value="$PROJECT_DIR$/product_cars.py" />
@@ -240,6 +231,7 @@
         <option value="$PROJECT_DIR$/delta_spanner.py" />
         <option value="$PROJECT_DIR$/data.py" />
         <option value="$PROJECT_DIR$/experiment.py" />
+        <option value="$PROJECT_DIR$/sort_edges.py" />
       </list>
     </option>
   </component>
@@ -621,9 +613,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24093817" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24093817" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -709,14 +700,6 @@
     <entry file="file://$PROJECT_DIR$/linprog1.79.txt" />
     <entry file="file://$PROJECT_DIR$/linprog1.38.txt" />
     <entry file="file://$PROJECT_DIR$/linprog0.7.txt" />
-    <entry file="file://$PROJECT_DIR$/sort_edges.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="693">
-          <caret line="21" column="30" lean-forward="false" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/experiment" />
     <entry file="file://$PROJECT_DIR$/product_probability_matrix.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -839,6 +822,19 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1201">
           <caret line="55" column="22" lean-forward="true" selection-start-line="55" selection-start-column="22" selection-end-line="55" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sort_edges.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1320">
+          <caret line="10" column="62" lean-forward="false" selection-start-line="10" selection-start-column="62" selection-end-line="10" selection-end-column="62" />
+          <caret line="11" column="57" lean-forward="false" selection-start-line="11" selection-start-column="57" selection-end-line="11" selection-end-column="57" />
+          <caret line="21" column="62" lean-forward="false" selection-start-line="21" selection-start-column="62" selection-end-line="21" selection-end-column="62" />
+          <caret line="22" column="57" lean-forward="false" selection-start-line="22" selection-start-column="57" selection-end-line="22" selection-end-column="57" />
+          <caret line="39" column="58" lean-forward="false" selection-start-line="39" selection-start-column="58" selection-end-line="39" selection-end-column="58" />
+          <caret line="40" column="53" lean-forward="false" selection-start-line="40" selection-start-column="53" selection-end-line="40" selection-end-column="53" />
           <folding />
         </state>
       </provider>
