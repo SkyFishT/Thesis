@@ -94,7 +94,7 @@ if __name__ == "__main__":
     cross_roads = 2
     split =3.4
     global_ok=[True,False]
-    experiment_times=10
+    experiment_times=20
     number_of_cars=500
     product_matrix(cross_roads,split,epsilon_set,delta,True)
     product_error_rate(cross_roads,epsilon_set,experiment_times,number_of_cars)
