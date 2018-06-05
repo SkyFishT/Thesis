@@ -30,13 +30,15 @@ def draw_plot(cars,mapping_cars,level):
         #        max_num = format_points[i]
         for i in format_points.iterkeys():
             if format_points[i]<level:
-                plt.scatter(i[0],i[1],c='#D8BFD8')
+                plt.scatter(i[0],i[1],c='#FFC0CB')
             elif format_points[i]>=level and format_points[i]<level*2:
-                plt.scatter(i[0], i[1], c='#DA70D6')
+                plt.scatter(i[0], i[1], c='#FF69B4')
             elif format_points[i]>=level*2 and format_points[i]<level*3:
-                plt.scatter(i[0], i[1], c='#800080')
+                plt.scatter(i[0], i[1], c='#FF1493')
+            elif format_points[i]>=level*3 and format_points[i]<level*4:
+                plt.scatter(i[0], i[1], c='#DC143C')
             else:
-                plt.scatter(i[0], i[1], c='#000000')
+                plt.scatter(i[0], i[1], c='#800080')
         plt.subplot(nums_of_subplot, 2, (index_points + 1) * 2)
         tmp_cars=[]
         for i in cars:
@@ -49,13 +51,15 @@ def draw_plot(cars,mapping_cars,level):
                 format_points2[i] += 1
         for i in format_points2.iterkeys():
             if format_points2[i]<level:
-                plt.scatter(i[0],i[1],c='#D8BFD8')
+                plt.scatter(i[0],i[1],c='#FFC0CB')
             elif format_points2[i]>=level and format_points2[i]<level*2:
-                plt.scatter(i[0], i[1], c='#DA70D6')
+                plt.scatter(i[0], i[1], c='#FF69B4')
             elif format_points2[i]>=level*2 and format_points2[i]<level*3:
-                plt.scatter(i[0], i[1], c='#800080')
+                plt.scatter(i[0], i[1], c='#FF1493')
+            elif format_points2[i]>=level*3 and format_points2[i]<level*4:
+                plt.scatter(i[0], i[1], c='#DC143C')
             else:
-                plt.scatter(i[0], i[1], c='#000000')
+                plt.scatter(i[0], i[1], c='#800080')
         different=0
         print format_points
         print format_points2
