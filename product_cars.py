@@ -14,18 +14,14 @@ def product_cars_by_random(numbers,width,height,segment):
     while row<=height:
         row+=segment
         rows.append(row)
-    for i in range(numbers*5/10):
+    for i in range(numbers*4/5):
         x = random.random()
         y = random.random()
         cars.append([x*width,y*height])
-    for i in range(numbers*2/10):
+    for i in range(numbers/5):
         x = random.random()
         y = random.random()
         cars.append([x*width/4,y*height/4])
-    for i in range(numbers*3/10):
-        x = random.random()
-        y = random.random()
-        cars.append([width-x*width/4,height-y*height/4])
     for i in range(len(cars)):
         x=True
         index=0
