@@ -30,6 +30,8 @@ def map_position(cars,epsilon):
             sum+=map_array[i]
             if sum>probability:
                 return points[i]
+        return points[-1]
+
 
     for i in cars:
         travers_cars.append(traverse(i))

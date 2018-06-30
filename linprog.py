@@ -74,10 +74,12 @@ def liner_programming(epsilon=0.1,delta=1.1,global_scope=False):
                 if delta_spanner_global[i,j]==1:
                     for k in range(len(points)):
                         tmp_a = [0] * numbers_of_various
+                        m = len(points_in_scpoe_array_dict[crossroad[i]])
+                        n = len(points_in_scpoe_array_dict[crossroad[j]])
                         for argu_eq_one in points_in_scpoe_array_dict[crossroad[i]]:
-                            tmp_a[argu_eq_one*len(points)+k] = 1
+                            tmp_a[argu_eq_one*len(points)+k] = n
                         for argu_eq_epsilon in points_in_scpoe_array_dict[crossroad[j]]:
-                            tmp_a[argu_eq_epsilon*len(points)+k] = -ratio
+                            tmp_a[argu_eq_epsilon*len(points)+k] = -ratio*m
                         a_ub.append(tmp_a)
                         b_ub = b_ub + [0]
 
