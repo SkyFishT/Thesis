@@ -32,7 +32,6 @@ def map_position(cars,epsilon):
                 return points[i]
         return points[-1]
 
-
     for i in cars:
         travers_cars.append(traverse(i))
     return travers_cars
