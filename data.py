@@ -1,5 +1,6 @@
 import os
 def productdata(width=4):
+    road_length = 100
     datafile = open(os.path.join(os.getcwd(), 'datas', 'data.txt'), 'w')
     cross_road_file = open(os.path.join(os.getcwd(), 'datas', 'cross_road.txt'), 'w')
     data=[]
@@ -8,16 +9,16 @@ def productdata(width=4):
         i=float(i)
         for j in range(width-1):
             j=float(j)
-            data.append(((i*10,j*10),(i*10,(j+1)*10)))
-            cross_road.add((i*10,j*10))
-            cross_road.add((i*10,(j+1)*10))
+            data.append(((i*road_length,j*road_length),(i*road_length,(j+1)*road_length)))
+            cross_road.add((i*road_length,j*road_length))
+            cross_road.add((i*road_length,(j+1)*road_length))
     for j in range(width):
         j=float(j)
         for i in range(width-1):
             i=float(i)
-            data.append(((i*10,j*10),((i+1)*10,j*10)))
-            cross_road.add((i*10,j*10))
-            cross_road.add(((i+1)*10,j*10))
+            data.append(((i*road_length,j*road_length),((i+1)*road_length,j*road_length)))
+            cross_road.add((i*road_length,j*road_length))
+            cross_road.add(((i+1)*road_length,j*road_length))
 
     datafile.write(str(data))
     datafile.close()

@@ -1,7 +1,5 @@
 import random,math
-def map_position_planeLaplace(cars,epsilon,cross_roads,closest_points):
-    radius = (cross_roads-1) * 10 * math.sqrt(2)
-    epsilon /= radius
+def map_position_planeLaplace(cars,epsilon,closest_points):
     traverse_cars=[]
     for i in cars:
         tmp_i=[0,0]

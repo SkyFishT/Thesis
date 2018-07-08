@@ -7,14 +7,15 @@ def liner_programming(epsilon=0.1,delta=1.1,global_scope=False):
     numbers_of_various = numbers_of_points * numbers_of_points
     c = [0] * numbers_of_various
     ratio = math.pow(math.e, epsilon / delta)
+    def distance_of_two_point(x, y, ndigits=2):
+        return round(math.sqrt(math.pow(x[0] - y[0], 2) + math.pow(x[1] - y[1], 2)), ndigits)
     if global_scope==True:
         print 'global differentiate'
         print 'the number of points is ' + str(numbers_of_points)
         print points
         print 'numbers_of_various is:' + str(numbers_of_various)
         delta_spanner_pairs = np.load(os.path.join(os.getcwd(),'datas', 'delta_spanner.npy'))
-        def distance_of_two_point(x,y,ndigits=2):
-            return round(math.sqrt(math.pow(x[0]-y[0],2)+math.pow(x[1]-y[1],2)),ndigits)
+
         #set the objective function arguments
         for i in range(len(points)):
             for j in range(len(points)):
@@ -32,7 +33,7 @@ def liner_programming(epsilon=0.1,delta=1.1,global_scope=False):
                     for k in range(len(points)):
                         tmp_a = [0] * numbers_of_various
                         tmp_a[i*len(points)+k] = 1
-                        tmp_a[j*len(points)+k] = -ratio
+                        tmp_a[j*len(points)+k] = -math.pow(ratio,distance_of_two_point(points[i],points[j]))
                         a_ub.append(tmp_a)
                         b_ub = b_ub + [0]
         print "a_ub size:"+str(len(a_ub))+","+str(len(a_ub[0]))+",b_ub size:"+str(len(b_ub))
@@ -65,7 +66,7 @@ def liner_programming(epsilon=0.1,delta=1.1,global_scope=False):
                         for k in range(len(points)):
                             tmp_a = [0] * numbers_of_various
                             tmp_a[item[0] * len(points) + k] = 1
-                            tmp_a[item2[0] * len(points) + k] = -ratio
+                            tmp_a[item2[0] * len(points) + k] = -math.pow(ratio,distance_of_two_point(item[1],item2[1]))
                             a_ub.append(tmp_a)
                             b_ub = b_ub + [0]
         delta_spanner_global = np.load(os.path.join(os.getcwd(),'datas', 'delta_spanner_global.npy'))

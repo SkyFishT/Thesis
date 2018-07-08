@@ -44,7 +44,7 @@ def product_error_rate(cross_roads,epsilon_set,experi_times,numofcars):
             traverse_cars = map_position_by_matrix.map_position(cars, epsilon)
             maping_cars.append(traverse_cars)
         for epsilon in epsilon_set:
-            traverse_cars = planeLaplace.map_position_planeLaplace(cars, epsilon,cross_roads,closest_points)
+            traverse_cars = planeLaplace.map_position_planeLaplace(cars, epsilon,closest_points)
             contrast_maping_cars.append(traverse_cars)
 
         points_file = open(os.path.join(os.getcwd() ,'datas', 'points.txt'), 'r')
@@ -133,10 +133,10 @@ def product_error_rate(cross_roads,epsilon_set,experi_times,numofcars):
     return AVG_DIFF_SUM
 if __name__ == "__main__":
     #experiment_files = open(os.path.join(os.getcwd(), 'datas', 'experiment.txt'), 'a')
-    epsilon_set = [(x+1)/float(5) for x in range(20)]
+    epsilon_set = [(x+1)/float(10) for x in range(20)]
     delta = 1.5
-    cross_roads = 3
-    split =5
+    cross_roads = 2
+    split =34
     global_ok=[True]
     experiment_times=20
     number_of_cars=500
