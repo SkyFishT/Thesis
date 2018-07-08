@@ -1,6 +1,6 @@
 import os
 def productdata(width=4):
-    road_length = 100
+    road_length = 10
     datafile = open(os.path.join(os.getcwd(), 'datas', 'data.txt'), 'w')
     cross_road_file = open(os.path.join(os.getcwd(), 'datas', 'cross_road.txt'), 'w')
     data=[]
