@@ -1,5 +1,5 @@
 import data,edges,points,sort_edges,os,time,product_probability_matrix,math,product_cars,map_position_by_matrix
-import planeLaplace
+import planeLaplace,exponent
 
 def product_matrix(cross_roads,split,epsilon_set,delta,global_scope=False):
     global cur_time
@@ -11,6 +11,7 @@ def product_matrix(cross_roads,split,epsilon_set,delta,global_scope=False):
     for epsilon in epsilon_set:
         cur_time = time.time()
         product_probability_matrix.product_matrix(epsilon,delta,global_scope)
+        exponent.product_matrix_exponent(epsilon)
         times.append({'epsilon':epsilon,'time':time.time()-cur_time})
     experiment_files.write(str(times)+'\n')
     experiment_files.close()
@@ -37,20 +38,25 @@ def product_error_rate(cross_roads,epsilon_set,experi_times,numofcars):
                 closest_dist = cur_dist
                 closest_point = i
         return closest_point
-    def experiment_in_error(diff,mae_diff,diff_sum,contrast_diff_sum):
+    def experiment_in_error(diff,mae_diff,diff_sum,contrast_diff_sum_laplace,contrast_diff_sum_exponent):
         maping_cars = []
-        contrast_maping_cars = []
+        contrast_maping_cars_laplace = []
+        contrast_maping_cars_exponent = []
         for epsilon in epsilon_set:
             traverse_cars = map_position_by_matrix.map_position(cars, epsilon)
             maping_cars.append(traverse_cars)
         for epsilon in epsilon_set:
             traverse_cars = planeLaplace.map_position_planeLaplace(cars, epsilon,closest_points)
-            contrast_maping_cars.append(traverse_cars)
+            contrast_maping_cars_laplace.append(traverse_cars)
+        for epsilon in epsilon_set:
+            traverse_cars = exponent.map_position_exponent(cars, epsilon)
+            contrast_maping_cars_exponent.append(traverse_cars)
 
         points_file = open(os.path.join(os.getcwd() ,'datas', 'points.txt'), 'r')
         points = eval(points_file.read())
         points_set = maping_cars
-        contrast_points_set = contrast_maping_cars
+        contrast_points_set_laplace = contrast_maping_cars_laplace
+        contrast_points_set_exponent = contrast_maping_cars_exponent
         for index_points in range(nums_of_points_set):
             format_points = {}
             for i in points_set[index_points]:
@@ -90,52 +96,62 @@ def product_error_rate(cross_roads,epsilon_set,experi_times,numofcars):
             mae_different /= float(len(points))
             mae_diff[index_points].append(mae_different)
             different_sum=0
-            contrast_different_sum = 0
+            contrast_different_sum_laplace = 0
+            contrast_different_sum_exponent = 0
             for i in range(numofcars):
-                different_sum += distance_of_two_point(points_set[index_points][i],tmp_cars[i])
-                contrast_different_sum += distance_of_two_point(contrast_points_set[index_points][i], cars[i])
+                different_sum += distance_of_two_point(points_set[index_points][i],cars[i])
+                contrast_different_sum_laplace += distance_of_two_point(contrast_points_set_laplace[index_points][i], cars[i])
+                contrast_different_sum_exponent += distance_of_two_point(contrast_points_set_exponent[index_points][i],
+                                                                        cars[i])
             diff_sum[index_points].append(different_sum)
-            contrast_diff_sum[index_points].append(contrast_different_sum)
+            contrast_diff_sum_laplace[index_points].append(contrast_different_sum_laplace)
+            contrast_diff_sum_exponent[index_points].append(contrast_different_sum_exponent)
     diff=[]
     mae_diff=[]
     diff_sum=[]
-    contrast_diff_sum=[]
+    contrast_diff_sum_laplace=[]
+    contrast_diff_sum_exponent = []
     for i in range(nums_of_points_set):
         diff.append([])
         mae_diff.append([])
         diff_sum.append([])
-        contrast_diff_sum.append([])
+        contrast_diff_sum_laplace.append([])
+        contrast_diff_sum_exponent.append([])
     for i in range(experi_times):
-        experiment_in_error(diff,mae_diff,diff_sum,contrast_diff_sum)
+        experiment_in_error(diff,mae_diff,diff_sum,contrast_diff_sum_laplace,contrast_diff_sum_exponent)
     AVG_diff=[0]*nums_of_points_set
     MAE_diff=[0]*nums_of_points_set
     AVG_DIFF_SUM = [0] * nums_of_points_set
-    CONTRAST_AVG_DIFF_SUM1 = [0] * nums_of_points_set
+    CONTRAST_AVG_DIFF_SUM_LAPLACE = [0] * nums_of_points_set
+    CONTRAST_AVG_DIFF_SUM_EXPO = [0] * nums_of_points_set
     for i in range(nums_of_points_set):
         for j in range(experi_times):
             AVG_diff[i]+=diff[i][j]
             MAE_diff[i]+=mae_diff[i][j]
             AVG_DIFF_SUM[i]+=diff_sum[i][j]
-            CONTRAST_AVG_DIFF_SUM1[i] += contrast_diff_sum[i][j]
+            CONTRAST_AVG_DIFF_SUM_LAPLACE[i] += contrast_diff_sum_laplace[i][j]
+            CONTRAST_AVG_DIFF_SUM_EXPO[i] += contrast_diff_sum_exponent[i][j]
     for i in range(nums_of_points_set):
         #experiment_files.write('in epsilon_array-'+str(epsilon_set[i])+':' + str(diff[i])+ '\n')
         AVG_diff[i]=AVG_diff[i]/experi_times
         MAE_diff[i]/=experi_times
         AVG_DIFF_SUM[i] /= experi_times
-        CONTRAST_AVG_DIFF_SUM1[i] /= experi_times
+        CONTRAST_AVG_DIFF_SUM_LAPLACE[i] /= experi_times
+        CONTRAST_AVG_DIFF_SUM_EXPO[i] /= experi_times
     experiment_files.write('avg cars:' + str(float(numofcars)/len(points))+'\n')
     for i in range(nums_of_points_set):
         #experiment_files.write('average_differ:' + str(AVG_diff[i])+ '\n')
         #experiment_files.write('mae_differ:' + str(MAE_diff[i])+'\n')
-        experiment_files.write('average_differ_distance_sum:' + str(AVG_DIFF_SUM[i]) + '\n')
-        experiment_files.write('contrast_average_differ_distance_sum1:' + str(CONTRAST_AVG_DIFF_SUM1[i]) + '\n')
+        experiment_files.write('differ_distance_sum:' + str(AVG_DIFF_SUM[i]) + '\n')
+        experiment_files.write('contrast_differ_distance_sum_laplace:' + str(CONTRAST_AVG_DIFF_SUM_LAPLACE[i]) + '\n')
+        experiment_files.write('contrast_differ_distance_sum_exponent:' + str(CONTRAST_AVG_DIFF_SUM_EXPO[i]) + '\n')
     experiment_files.close()
     return AVG_DIFF_SUM
 if __name__ == "__main__":
     #experiment_files = open(os.path.join(os.getcwd(), 'datas', 'experiment.txt'), 'a')
     epsilon_set = [(x+1)/float(5) for x in range(10)]
-    delta = 1.1
-    cross_roads = 3
+    delta = 1.5
+    cross_roads = 2
     split = 3.4
     global_ok=[True]
     experiment_times=20

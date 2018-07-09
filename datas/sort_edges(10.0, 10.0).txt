@@ -1,1 +1,0 @@
-[{'pointA': 11, 'pointB': 11, 'distance': 0.0}, {'pointA': 10, 'pointB': 10, 'distance': 0.0}, {'pointA': 7, 'pointB': 7, 'distance': 0.0}, {'pointA': 10, 'pointB': 11, 'distance': 3.2}, {'pointA': 7, 'pointB': 11, 'distance': 3.2}, {'pointA': 7, 'pointB': 10, 'distance': 4.53}]

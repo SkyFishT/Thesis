@@ -1,0 +1,32 @@
+[{'epsilon': 0.2, 'time': 0.30500006675720215}, {'epsilon': 0.4, 'time': 0.2990000247955322}, {'epsilon': 0.6, 'time': 0.41699981689453125}, {'epsilon': 0.8, 'time': 0.36300015449523926}, {'epsilon': 1.0, 'time': 0.4089999198913574}, {'epsilon': 1.2, 'time': 0.43400001525878906}, {'epsilon': 1.4, 'time': 0.5309998989105225}, {'epsilon': 1.6, 'time': 0.4480001926422119}, {'epsilon': 1.8, 'time': 0.4629998207092285}, {'epsilon': 2.0, 'time': 0.4660000801086426}]
+avg cars:41.6666666667
+differ_distance_sum:2387.3845
+contrast_differ_distance_sum_laplace:1618.2415
+contrast_differ_distance_sum_exponent:3037.749
+differ_distance_sum:1689.5985
+contrast_differ_distance_sum_laplace:1037.5475
+contrast_differ_distance_sum_exponent:2371.369
+differ_distance_sum:1172.3655
+contrast_differ_distance_sum_laplace:794.157
+contrast_differ_distance_sum_exponent:1805.165
+differ_distance_sum:889.23
+contrast_differ_distance_sum_laplace:679.5395
+contrast_differ_distance_sum_exponent:1364.528
+differ_distance_sum:735.7275
+contrast_differ_distance_sum_laplace:611.321
+contrast_differ_distance_sum_exponent:1087.1705
+differ_distance_sum:633.892
+contrast_differ_distance_sum_laplace:573.2695
+contrast_differ_distance_sum_exponent:888.1745
+differ_distance_sum:572.37
+contrast_differ_distance_sum_laplace:546.024
+contrast_differ_distance_sum_exponent:752.3065
+differ_distance_sum:535.617
+contrast_differ_distance_sum_laplace:529.113
+contrast_differ_distance_sum_exponent:660.6015
+differ_distance_sum:511.225
+contrast_differ_distance_sum_laplace:515.8915
+contrast_differ_distance_sum_exponent:605.2215
+differ_distance_sum:494.235
+contrast_differ_distance_sum_laplace:508.334
+contrast_differ_distance_sum_exponent:570.36

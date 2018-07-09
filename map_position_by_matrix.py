@@ -22,7 +22,7 @@ def map_position(cars,epsilon):
         for i in points:
             index+=1
             if closest_point == i:
-                break;
+                break
         map_array=matrix[index]
         probability = random.random()
         sum=0
