@@ -149,9 +149,9 @@ def product_error_rate(cross_roads,epsilon_set,experi_times,numofcars):
     return AVG_DIFF_SUM
 if __name__ == "__main__":
     #experiment_files = open(os.path.join(os.getcwd(), 'datas', 'experiment.txt'), 'a')
-    epsilon_set = [(x+1)/float(5) for x in range(10)]
+    epsilon_set = [(x+1)/float(5) for x in range(20)]
     delta = 1.5
-    cross_roads = 2
+    cross_roads = 3
     split = 3.4
     global_ok=[True]
     experiment_times=20
