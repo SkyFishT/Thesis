@@ -152,7 +152,7 @@ if __name__ == "__main__":
     epsilon_set = [(x+1)/float(5) for x in range(20)]
     delta = 1.5
     cross_roads = 2
-    split = 3.4
+    split = 5
     global_ok=[True]
     experiment_times=20
     number_of_cars=500
