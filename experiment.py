@@ -99,10 +99,10 @@ def product_error_rate(cross_roads,epsilon_set,experi_times,numofcars):
             contrast_different_sum_laplace = 0
             contrast_different_sum_exponent = 0
             for i in range(numofcars):
-                different_sum += distance_of_two_point(points_set[index_points][i],cars[i])
-                contrast_different_sum_laplace += distance_of_two_point(contrast_points_set_laplace[index_points][i], cars[i])
+                different_sum += distance_of_two_point(points_set[index_points][i],tmp_cars[i])
+                contrast_different_sum_laplace += distance_of_two_point(contrast_points_set_laplace[index_points][i], tmp_cars[i])
                 contrast_different_sum_exponent += distance_of_two_point(contrast_points_set_exponent[index_points][i],
-                                                                        cars[i])
+                                                                         tmp_cars[i])
             diff_sum[index_points].append(different_sum)
             contrast_diff_sum_laplace[index_points].append(contrast_different_sum_laplace)
             contrast_diff_sum_exponent[index_points].append(contrast_different_sum_exponent)
@@ -151,7 +151,7 @@ if __name__ == "__main__":
     #experiment_files = open(os.path.join(os.getcwd(), 'datas', 'experiment.txt'), 'a')
     epsilon_set = [(x+1)/float(5) for x in range(20)]
     delta = 1.5
-    cross_roads = 3
+    cross_roads = 2
     split = 3.4
     global_ok=[True]
     experiment_times=20
