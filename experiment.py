@@ -151,7 +151,7 @@ def product_error_rate(cross_roads,epsilon_set,experi_times,numofcars):
 if __name__ == "__main__":
     #experiment_files = open(os.path.join(os.getcwd(), 'datas', 'experiment.txt'), 'a')
     epsilon_set = [(x+1)/float(5) for x in range(10)]
-    delta = 1.3
+    delta = 1.2
     cross_roads = 3
     split = 3.4
     global_ok=[True]
@@ -160,7 +160,7 @@ if __name__ == "__main__":
     two_mode=[]
     diff_rate=[]
     for i in global_ok:
-        #product_matrix(cross_roads, split, epsilon_set, delta, i)
+        product_matrix(cross_roads, split, epsilon_set, delta, i)
         two_mode.append(product_error_rate(cross_roads,epsilon_set,experiment_times,number_of_cars))
     #for i in range(len(two_mode[0])):
         #diff_rate.append(abs(two_mode[0][i]-two_mode[1][i])/two_mode[0][i])
