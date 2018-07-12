@@ -12,6 +12,7 @@ def product_matrix(cross_roads,split,epsilon_set,delta,global_scope=False):
         cur_time = time.time()
         product_probability_matrix.product_matrix(epsilon,delta,global_scope)
         exponent.product_matrix_exponent(epsilon)
+        print time.time()-cur_time
         times.append({'epsilon':epsilon,'time':time.time()-cur_time})
     experiment_files.write(str(times)+'\n')
     experiment_files.close()
@@ -149,17 +150,17 @@ def product_error_rate(cross_roads,epsilon_set,experi_times,numofcars):
     return AVG_DIFF_SUM
 if __name__ == "__main__":
     #experiment_files = open(os.path.join(os.getcwd(), 'datas', 'experiment.txt'), 'a')
-    epsilon_set = [(x+1)/float(5) for x in range(20)]
-    delta = 1.5
-    cross_roads = 2
-    split = 2
+    epsilon_set = [(x+1)/float(5) for x in range(10)]
+    delta = 1.3
+    cross_roads = 3
+    split = 3.4
     global_ok=[True]
     experiment_times=20
-    number_of_cars=500
+    number_of_cars=1000
     two_mode=[]
     diff_rate=[]
     for i in global_ok:
-        product_matrix(cross_roads, split, epsilon_set, delta, i)
+        #product_matrix(cross_roads, split, epsilon_set, delta, i)
         two_mode.append(product_error_rate(cross_roads,epsilon_set,experiment_times,number_of_cars))
     #for i in range(len(two_mode[0])):
         #diff_rate.append(abs(two_mode[0][i]-two_mode[1][i])/two_mode[0][i])
