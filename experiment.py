@@ -151,7 +151,7 @@ def product_error_rate(cross_roads,epsilon_set,experi_times,numofcars):
 if __name__ == "__main__":
     #experiment_files = open(os.path.join(os.getcwd(), 'datas', 'experiment.txt'), 'a')
     epsilon_set = [(x+1)/float(5) for x in range(10)]
-    delta = 1.2
+    delta = 1.1
     cross_roads = 3
     split = 3.4
     global_ok=[True]
